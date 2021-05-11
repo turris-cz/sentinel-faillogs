@@ -1,0 +1,6 @@
+= Sentinel-faillogs - Failed login attempt logs collector
+CZ.NIC z.s.p.o. <packaging@turris.cz>
+v1.0, 2021-05-10
+:icons:
+
+This collects failed login attempts to running real services from system log.
