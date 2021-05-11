@@ -4,3 +4,77 @@ v1.0, 2021-05-10
 :icons:
 
 This collects failed login attempts to running real services from system log.
+
+At the moment this supports only SSH daemon and expects logs in
+`/var/log/messages`.
+
+
+== Dependencies
+
+* https://github.com/zeromq/libzmq[libczmq]
+* https://github.com/msgpack/msgpack-c[msgpack]
+* https://gitlab.nic.cz/turris/logc[logc]
+* http://www.hyperrealm.com/libconfig/libconfig.html[libconfig]
+* On non-glibc http://www.lysator.liu.se/~nisse/misc[argp-standalone]
+
+For bootstrap (not release tarballs):
+
+* autotools
+* autoconf-archive
+
+For tests:
+
+* https://libcheck.github.io/check[check]
+* Optionally http://www.valgrind.org[valgrind]
+* For linting https://github.com/danmar/cppcheck[cppcheck]
+* For coverage http://ltp.sourceforge.net/coverage/lcov.php[lcov]
+
+
+== Compilation
+
+To compile you have to run:
+
+----
+ ./configure
+ make
+----
+
+Subsequent installation can be done with `make install`.
+
+When you do not use distribution archive then you have to run initially
+`./bootstrap`.
+
+
+== Running tests
+
+Base64C contains basic tests in directory tests. To run all tests you can just simply
+run:
+
+----
+ make check
+----
+
+You can also run tests with Valgrind:
+
+----
+ make check-valgrind
+----
+
+To run checks with just one specific Valgrind test such as memtest you can run:
+
+----
+ make check-valgrind-memcheck
+----
+
+Source code of project can be also linted with cppcheck by running:
+
+----
+ make lint
+----
+
+There is also possibility to generate code coverage for test cases. To do so you
+can run:
+
+----
+ make check-code-coverage
+----

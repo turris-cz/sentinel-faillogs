@@ -1,0 +1,29 @@
+%compare-lengths
+%compare-strncmp
+
+%null-strings
+%readonly-tables
+%switch=1
+%language=ANSI-C
+
+%define hash-function-name gperf_identifier_hash
+%define lookup-function-name gperf_identifier
+%define string-pool-name gperf_identifier_id_string
+%define slot-name id
+%define constants-prefix IDENTIFIER
+
+%delimiters=,
+
+%struct-type
+%{
+struct gperf_identifier {
+	const char *id;
+	enum identifier identifier;
+};
+%}
+
+struct gperf_identifier;
+
+%%
+sshd, I_SSHD
+%%

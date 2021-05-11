@@ -1,0 +1,11 @@
+lint_V = $(lint_V_@AM_V@)
+lint_V_ = $(lint_V_@AM_DEFAULT_V@)
+lint_V_0 = @echo "  LINT    " $@;
+
+lint: $(linted_files)
+	$(lint_V)$(CPPCHECK) --error-exitcode=1 \
+		--enable=warning \
+		--std=c11 \
+		--template='{file}:{line},{severity},{id},{message}' \
+		--inline-suppr \
+		 $^
